@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#021B14;--bg2:#041F18;--bg3:#062820;
+  --green:#00A86B;--neon:#3DFFB5;--neon2:#00FFD1;
+  --text:#E8FFF8;--text2:#8FCFB8;--text3:#4A8870;
+  --card:rgba(0,168,107,0.06);--border:rgba(61,255,181,0.15);
+  --border2:rgba(61,255,181,0.35);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--green);border-radius:2px}
+
+/* Background Grid */
+.bg-grid{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.bg-grid::before{content:'';position:absolute;width:200%;height:200%;background-image:linear-gradient(rgba(61,255,181,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(61,255,181,0.03) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite}
+.bg-grid::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(0,168,107,0.15),transparent),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(61,255,181,0.05),transparent)}
+
+/* Scanline */
+.scanline{position:fixed;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--neon),transparent);z-index:1000;pointer-events:none;animation:scan 8s ease-in-out infinite;opacity:0.3}
+
+/* Scroll Progress */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--green),var(--neon));z-index:1001;transition:width 0.1s;box-shadow:0 0 8px var(--neon)}
+
+/* Buttons */
+.btn-primary{font-family:'Share Tech Mono',monospace;font-size:0.78rem;letter-spacing:2px;padding:14px 32px;background:var(--neon);color:var(--bg);border:none;cursor:pointer;text-transform:uppercase;font-weight:700;transition:all 0.3s;text-decoration:none;display:inline-block;position:relative;overflow:hidden}
+.btn-primary:hover{box-shadow:0 0 30px rgba(61,255,181,0.5);transform:translateY(-2px)}
+.btn-outline{font-family:'Share Tech Mono',monospace;font-size:0.78rem;letter-spacing:2px;padding:13px 32px;background:transparent;color:var(--neon);border:1px solid var(--neon);cursor:pointer;text-transform:uppercase;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-outline:hover{background:rgba(61,255,181,0.1);box-shadow:0 0 20px rgba(61,255,181,0.3);transform:translateY(-2px)}
+
+/* Section Commons */
+.section{padding:6rem 2rem;position:relative;z-index:1}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-tag{font-family:'Share Tech Mono',monospace;font-size:0.68rem;letter-spacing:4px;color:var(--neon);text-transform:uppercase;margin-bottom:1rem;display:block}
+.section-title{font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--text);display:inline-block}
+.section-title::after{content:'';display:block;width:60px;height:2px;background:linear-gradient(to right,var(--neon),transparent);margin:1rem auto 0;box-shadow:0 0 10px var(--neon)}
+.section-sub{color:var(--text2);font-size:1rem;max-width:600px;margin:1rem auto 0;line-height:1.8}
+
+/* Glass Card */
+.glass-card{background:var(--card);border:1px solid var(--border);padding:2rem;position:relative;transition:all 0.4s;overflow:hidden}
+.glass-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--neon),transparent);opacity:0;transition:opacity 0.3s}
+.glass-card:hover{border-color:var(--border2);box-shadow:0 0 30px rgba(61,255,181,0.08),0 20px 40px rgba(0,0,0,0.3);transform:translateY(-4px)}
+.glass-card:hover::before{opacity:1}
+
+/* Corner decorations */
+.cc{position:absolute;width:12px;height:12px;border-color:var(--neon);border-style:solid;opacity:0.6}
+.cc.tl{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.cc.tr{top:-1px;right:-1px;border-width:2px 2px 0 0}
+.cc.bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
+.cc.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+
+/* Toast */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--bg3);border:1px solid var(--neon);padding:1rem 1.5rem;font-family:'Share Tech Mono',monospace;font-size:0.78rem;color:var(--neon);z-index:999;transform:translateY(100px);opacity:0;transition:all 0.4s;box-shadow:0 0 30px rgba(61,255,181,0.15);letter-spacing:1px}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* Footer */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;position:relative;z-index:1}
+.footer-logo{font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;color:var(--neon);margin-bottom:1rem;text-shadow:0 0 30px rgba(61,255,181,0.4)}
+.footer-line{width:100px;height:1px;background:linear-gradient(to right,transparent,var(--neon),transparent);margin:1rem auto}
+.footer-text{font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--text3);letter-spacing:2px}
+
+/* Keyframes */
+@keyframes gridMove{0%{transform:translate(0,0)}100%{transform:translate(60px,60px)}}
+@keyframes scan{0%,100%{top:0;opacity:0}5%{opacity:0.3}95%{opacity:0.1}99%{top:100vh}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(61,255,181,0.4)}50%{box-shadow:0 0 0 8px rgba(61,255,181,0)}}
+@keyframes spinSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fillBar{from{width:0}}
+
+/* Responsive */
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-wrap{grid-template-columns:1fr!important}
+  .hero-img-wrap{order:-1}
+  .hero-btns,.hero-stats{justify-content:center}
+  .hero-desc{margin:0 auto 2.5rem}
+  .timeline::before{left:20px}
+  .tl-item{grid-template-columns:40px 1fr!important}
+  .tl-empty{display:none!important}
+  .tl-node{justify-content:flex-start!important}
+  .tl-content{padding:0 0 0 1rem!important}
+  .stat-box::after{display:none}
+}
+@media(max-width:480px){
+  .hero-title{font-size:2.2rem!important}
+  .hero-btns{flex-direction:column;align-items:center}
+}
