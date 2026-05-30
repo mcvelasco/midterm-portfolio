@@ -26,7 +26,7 @@ export default function HomePage() {
   const nameParts = fullName.trim().split(' ');
   const firstName = nameParts[0];
   const lastName = nameParts.slice(1).join(' ') || '';
-  const initials = nameParts.map((n: string) => n[0]).join('');
+ /* const initials = nameParts.map((n: string) => n[0]).join(''); */
 
   return (
     <div>
